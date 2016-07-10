@@ -1,0 +1,12 @@
+<%= link_to 'profile', profile_path%>
+<%= link_to 'logout', logout_path %>
+<h1>The Feed</h1>
+<%if @tweets %>
+<% @tweets.reverse.each do |x| %>
+<table>
+ <tr>
+   <td><%= "#{User.find(x.user_id).name} said: " %></td>  <td><%= x.content%></td>  <td><%= x.created_at%></td>
+ </tr>
+</table>
+<%end%>
+<%end%>

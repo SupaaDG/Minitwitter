@@ -1,0 +1,17 @@
+<h1>Tweet Away!!</h1>
+
+<%=form_for([@user, @tweet]) do |f| %>
+<div class="field">
+
+   <%= f.text_field :content %>
+ </div>
+
+
+ <div class="actions">
+     <%= f.submit 'Tweet' %>
+   </div>
+ <%end%>
+
+
+
+<%= link_to 'back', profile_path%>

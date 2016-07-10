@@ -1,0 +1,26 @@
+<h1>profile page</h1>
+
+<h1><%= "hello #{@user.name}"%></h1>
+<%= link_to 'Feed' , feed_path %> 
+<%= link_to 'Logout', logout_path%>
+
+<h3>
+  <%if @tweets && @tweets.length >= 0%>
+  <%= "You have #{@tweets.length} tweet so far"%>
+  <%else%>
+  <%= "You have no tweets so far"%>
+  <%end%>
+</h3>
+<%=link_to 'Make a tweet', new_user_tweet_path(@user)%>
+<h3>Below are your tweets from newest to oldest</h3>
+  <% if @tweets %>
+  <table>
+    <% @tweets.reverse.each do |tweet|%>
+      <tr>
+        <td><%=tweet.content%></td>
+        <td><%=tweet.created_at%></td>
+        <td> <%= link_to "delete", user_tweet_path(tweet.user_id, tweet.id),data: { confirm: "You sure?" },  :method => :delete %></td>
+      </tr>
+      <%end%>
+    </table>
+    <%end%>
